@@ -26,7 +26,7 @@ module.exports = (options = {}) => async input => {
 	}
 
 	if (options.maxSize){
-		args.push(`--resize-fit=${options.maxsize}`)
+		args.push(`--resize-fit=${options.maxSize}`)
 	}
 
 	if (options.resizeMethod){
