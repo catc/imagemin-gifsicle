@@ -3,6 +3,9 @@ const execa = require('execa');
 const gifsicle = require('gifsicle');
 const isGif = require('is-gif');
 
+const VALID_METHODS = ['sample', 'mix', 'catrom', 'mitchell', 'lanczos2', 'lanczos3']
+
+
 module.exports = (options = {}) => async input => {
 	if (!Buffer.isBuffer(input)) {
 		throw new TypeError(`Expected \`input\` to be of type \`Buffer\` but received type \`${typeof input}\``);
@@ -12,7 +15,7 @@ module.exports = (options = {}) => async input => {
 		return input;
 	}
 
-	const args = ['--no-warnings', '--no-app-extensions'];
+	const args = ['--no-app-extensions'];
 
 	if (options.interlaced) {
 		args.push('--interlace');
@@ -20,6 +23,22 @@ module.exports = (options = {}) => async input => {
 
 	if (options.optimizationLevel) {
 		args.push(`--optimize=${options.optimizationLevel}`);
+	}
+
+	if (options.maxSize){
+		args.push(`--resize-fit=${options.maxsize}`)
+	}
+
+	if (options.resizeMethod){
+		if (VALID_METHODS.includes(options.resizeMethod)){
+			args.push(`--resize-method=${options.resizeMethod}`)
+		} else {
+			throw new Error(`Unsupported resize method, must be one of ${VALID_METHODS.join(', ')}`)
+		}
+	}
+
+	if (options.lossy){
+		args.push(`--lossy=${options.lossy}`)
 	}
 
 	if (options.colors) {
