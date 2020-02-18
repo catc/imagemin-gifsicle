@@ -55,6 +55,25 @@ Select an optimization level between `1` and `3`.
 2. Also uses transparency to shrink the file further.
 3. Try several optimization methods (usually slower, sometimes better results)
 
+##### maxSize
+
+Type: `string`
+
+Resizes and maintains aspect ratio - format is `widthxheight`
+
+##### resizeMethod
+
+Type: `string`
+
+Resize algorithm - options are mix (default), sample, , catrom, mitchell, lanczos2, and lanczos3
+
+##### lossy
+
+Type: `number`
+
+Lossiness determines how many artifacts are allowed; higher values can result in smaller file sizes, but cause more artifacts. The default lossiness is 20.
+
+
 ##### colors
 
 Type: `number`
