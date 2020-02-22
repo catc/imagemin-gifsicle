@@ -44,7 +44,7 @@ Interlace gif for progressive rendering.
 
 ##### optimizationLevel
 
-Type: `number`\
+Type: `number`
 Default: `1`
 
 Select an optimization level between `1` and `3`.
@@ -66,6 +66,12 @@ Resizes and maintains aspect ratio - format is `widthxheight`
 Type: `string`
 
 Resize algorithm - options are mix (default), sample, , catrom, mitchell, lanczos2, and lanczos3
+
+##### scale
+
+Type: `number`
+
+Scale gif
 
 ##### lossy
 
